@@ -22,7 +22,7 @@ jobs:
             exclude: 
               - nodejs_version: 18
                 operating_system: macos-latest
-                
+
         runs-on: ${{ matrix.operating_system }}
         steps:
         - name: Checkout Repository
@@ -42,5 +42,5 @@ jobs:
         - name: Archive Test Result
           uses: actions/upload-artifact@v4
           with:
-            name: Mocha-Test-Result
+            name: Mocha-Test-Result-${{ github.run_number }}
             path: test-results.xml
