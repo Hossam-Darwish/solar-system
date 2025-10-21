@@ -17,7 +17,7 @@ jobs:
         name: Unit Testing
         strategy:
           matrix:
-            nodejs_version: [18, 19, 20]
+            nodejs_version: [18, 20]
             operating_system: [ubuntu-latest, macos-latest]
             exclude: 
               - nodejs_version: 18
@@ -39,11 +39,12 @@ jobs:
         - name: Unit Testing
           run: npm test
   
-      #  - name: Archive Test Result
-      #    uses: actions/upload-artifact@v4
-      #    with:
-      #      name: Mocha-Test-Result-${{ matrix.operating_system }}-${{ matrix.nodejs_version }}-${{ github.run_number }}
-      #      path: test-results.xml
+        - name: Archive Test Result
+          if: always()
+          uses: actions/upload-artifact@v4
+          with:
+            name: Mocha-Test-Result-${{ matrix.operating_system }}-${{ matrix.nodejs_version }}-${{ github.run_number }}
+            path: test-results.xml
 
     code-coverage:   
         name: Code Coverage
