@@ -38,15 +38,9 @@ jobs:
     
         - name: Unit Testing
           run: npm test
-
-        - name: Delete old artifact
-          uses: geekyeggo/delete-artifact@v4
-          with:
-            name: build-files
   
-          
         - name: Archive Test Result
           uses: actions/upload-artifact@v4
           with:
-            name: Mocha-Test-Result-${{ github.run_number }}
+            name: Mocha-Test-Result-${{ matrix.operating_system }}-${{ matrix.nodejs_version }}-${{ github.run_number }}
             path: test-results.xml
