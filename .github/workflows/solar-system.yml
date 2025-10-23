@@ -18,7 +18,7 @@ jobs:
         strategy:
           matrix:
             nodejs_version: [18, 20]
-            operating_system: [ubuntu-latest, macos-latest]
+            operating_system: [ubuntu-latest]
             exclude: 
               - nodejs_version: 18
                 operating_system: macos-latest
@@ -97,6 +97,29 @@ jobs:
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Docker build for testing
+        uses: docker/build-push-action@v6.18.0
+        with:    
+          context: .
+          push: false
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
+
+      - name: Docker image testing
+        run: |
+            docker images
+            docker run --name solar-system-app -d \
+            -p 3000:3000 \
+            -e MONGO_URI=$MONGO_URI \
+            -e MONGO_USERNAME=$MONGO_USERNAME \
+            -e MONGO_PASSWORD=$MONGO_PASSWORD \
+            ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
+            
+            exportIP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' solar-system-app)
+            echo $IP  
+            echo 'Testing Image using curl'
+            curl -s 127.0.0.1:3000/live | grep live
+
 
 
      
