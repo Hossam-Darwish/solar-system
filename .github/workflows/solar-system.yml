@@ -22,8 +22,8 @@ jobs:
               - 27017:27017
         env:
           MONGO_URI: 'mongodb://localhost:27017/superData'
-          MONGO_USERNAME: non-prod-user
-          MONGO_PASSWORD: non-prod-password        
+          MONGO_USERNAME: ${{ vars.MONGO_USERNAME_NON_PROD }}
+          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD_NON_PROD }}       
 
         strategy:
           matrix:
@@ -73,8 +73,8 @@ jobs:
               --name mongo
         env:
           MONGO_URI: 'mongodb://mongo:27017/superData'
-          MONGO_USERNAME: non-prod-user
-          MONGO_PASSWORD: non-prod-password  
+          MONGO_USERNAME: ${{ vars.MONGO_USERNAME_NON_PROD }}
+          MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD_NON_PROD }}
         runs-on: ubuntu-latest
         steps:
         - name: Checkout Repository
@@ -156,11 +156,22 @@ jobs:
         with:    
           context: .
           push: true
+<<<<<<< HEAD
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}  
+          
+      - name: GHCR Login
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}    
+=======
           tags: |
             ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }} 
             ghcr.io/hossam-darwish/sola-system:${{ github.sha }}
           
           
+>>>>>>> 798df1ac5c1a63d2021825feedf2ee2d6b37ea56
 
 
 
