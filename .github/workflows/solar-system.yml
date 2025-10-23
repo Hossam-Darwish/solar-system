@@ -87,6 +87,8 @@ jobs:
     docker: 
       name: Containerization
       needs: [unit-testing, code-coverage]
+      permissions: 
+        packages: write
       runs-on: ubuntu-latest
 
       steps:
@@ -98,6 +100,13 @@ jobs:
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: GHCR Login
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}    
 
       - name: Docker build for testing
         uses: docker/build-push-action@v6.18.0
@@ -121,12 +130,16 @@ jobs:
             echo Testing Image URL using wget
             wget -q -O - 127.0.0.1:3000/live | grep live
 
-      - name: Docker Push
+      - name: Docker and GHCR Push
         uses: docker/build-push-action@v6.18.0
         with:    
           context: .
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}      
+          tags: |
+            ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }} 
+            ghcr.io/${{ github.repository_owner }}/sola-system:${{ github.sha }}
+          
+          
 
 
 
