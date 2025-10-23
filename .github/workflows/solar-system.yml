@@ -24,7 +24,6 @@ jobs:
           MONGO_URI: 'mongodb://localhost:27017/superData'
           MONGO_USERNAME: ${{ vars.MONGO_USERNAME_NON_PROD }}
           MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD_NON_PROD }}       
-
         strategy:
           matrix:
             nodejs_version: [18, 20]
