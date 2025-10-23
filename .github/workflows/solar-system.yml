@@ -151,31 +151,14 @@ jobs:
             echo Testing Image URL using wget
             wget -q -O - 127.0.0.1:3000/live | grep live
 
-      - name: Docker and GHCR Push
+      - name: Docker HUB and GHCR Push
         uses: docker/build-push-action@v6.18.0
         with:    
           context: .
           push: true
-<<<<<<< HEAD
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}  
-          
-      - name: GHCR Login
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}    
-=======
           tags: |
             ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }} 
             ghcr.io/hossam-darwish/sola-system:${{ github.sha }}
           
-          
->>>>>>> 798df1ac5c1a63d2021825feedf2ee2d6b37ea56
-
-
-
-
-     
-
+        
 
