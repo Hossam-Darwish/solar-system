@@ -173,12 +173,13 @@ jobs:
         with:
           version: 'v1.34.1' 
 
-      - name: Use existing kubeconfig for local Minikube
+      - name: Fixing kubeconfig for localhost access
         run: |
             mkdir -p $HOME/.kube
             cp /home/osboxes/.kube/config $HOME/.kube/minikube-config
+            sed -i 's/192\.168\.[0-9]\+\.[0-9]\+/127.0.0.1/' $HOME/.kube/minikube-config
             export KUBECONFIG=$HOME/.kube/minikube-config
-            
+
       - name: Fetch kubernetes cluster details
         run: |
           kubectl version
