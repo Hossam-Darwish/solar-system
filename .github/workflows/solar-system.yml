@@ -159,6 +159,36 @@ jobs:
           tags: |
             ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }} 
             ghcr.io/hossam-darwish/sola-system:${{ github.sha }}
+
+    dev-deploy:
+      needs: docker
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Kubectl CLI  
+        uses: azure/setup-kubectl@v4
+        with:
+          version: 'v1.34.1' 
+
+      - name: Set kubeconfig file
+        uses: azure/k8s-set-context@v4
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG }}  
+
+      - name: Fetch kubernetes cluster details
+        run: |
+          kubectl version
+          kubectl get nodes
+
+          
+          
+          
+
+
+
           
         
 
