@@ -172,11 +172,6 @@ jobs:
         uses: azure/setup-kubectl@v4
         with:
           version: 'v1.34.1' 
-
-      - name: Fixing kubeconfig to use correct Minikube IP
-        run: |
-            export KUBECONFIG=/home/osboxes/.kube/config
-            kubectl config set-cluster minikube --server=https://192.168.58.2:8443 --insecure-skip-tls-verify=true
             
       - name: Fetch kubernetes cluster details
         run: |
