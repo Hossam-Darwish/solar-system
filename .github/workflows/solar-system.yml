@@ -173,12 +173,10 @@ jobs:
         with:
           version: 'v1.34.1' 
 
-      - name: Fixing kubeconfig for localhost access
+      - name: Configure Kubernetes access
         run: |
-             mkdir -p $HOME/.kube
-             cp /home/osboxes/.kube/config $HOME/.kube/config
+             export KUBECONFIG=/home/osboxes/.kube/config
              kubectl config set-cluster minikube --server=https://127.0.0.1:8443 --insecure-skip-tls-verify=true
-
       - name: Fetch kubernetes cluster details
         run: |
           kubectl version
