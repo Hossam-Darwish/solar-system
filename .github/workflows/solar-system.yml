@@ -173,11 +173,11 @@ jobs:
         with:
           version: 'v1.34.1' 
 
-      - name: Configure Kubernetes access
+      - name: Fixing kubeconfig to use correct Minikube IP
         run: |
-           export KUBECONFIG=/home/osboxes/.kube/config
-           kubectl config set-cluster minikube --server=https://127.0.0.1:8443 --insecure-skip-tls-verify=true 
-           
+            sudo sed -i 's|server: https://127.0.0.1:8443|server: https://192.168.58.2:8443|g' /home/osboxes/.kube/config
+            export KUBECONFIG=/home/osboxes/.kube/config
+            
       - name: Fetch kubernetes cluster details
         run: |
           kubectl version
