@@ -173,11 +173,12 @@ jobs:
         with:
           version: 'v1.34.1' 
 
-      - name: Set kubeconfig file
-        uses: azure/k8s-set-context@v4
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.KUBECONFIG }}  
+      - name: Set kubeconfig for local Minikube
+        run: |
+          mkdir -p $HOME/.kube
+          cp /home/osboxes/.kube/config $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+          export KUBECONFIG=$HOME/.kube/config
 
       - name: Fetch kubernetes cluster details
         run: |
