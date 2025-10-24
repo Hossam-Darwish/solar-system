@@ -175,9 +175,10 @@ jobs:
 
       - name: Use existing kubeconfig for local Minikube
         run: |
-          chmod 600 /home/osboxes/.kube/config
-          export KUBECONFIG=/home/osboxes/.kube/config
-
+            mkdir -p $HOME/.kube
+            cp /home/osboxes/.kube/config $HOME/.kube/minikube-config
+            export KUBECONFIG=$HOME/.kube/minikube-config
+            
       - name: Fetch kubernetes cluster details
         run: |
           kubectl version
