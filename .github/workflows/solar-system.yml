@@ -192,7 +192,11 @@ jobs:
 
       - name: Check Files
         run: |
-          cat kubernetes/development/*.yaml   
+          cat kubernetes/development/*.yaml  
+          
+      - name: Create Namespace
+        run: |
+          kubectl create namespace ${{ vars.NAMESPACE }} --dry-run=client -o yaml | kubectl apply -f -    
 
       - name: Create MongoDB Secret
         run: |
