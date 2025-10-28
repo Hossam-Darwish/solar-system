@@ -8,7 +8,7 @@ metadata:
   namespace: _{_NAMESPACE_}_
 spec:
     rules:
-    - host: solar-system-_{_NAMESPACE_}_.localhost
+    - host: solar-system-_{_NAMESPACE_}_._{_INGRESS_IP_}_.nip.io
       http:
         paths:
         - backend:
@@ -18,4 +18,5 @@ spec:
                 number: 3000
           path: /
           pathType: Prefix
+   
    
