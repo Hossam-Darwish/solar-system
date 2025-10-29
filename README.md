@@ -137,14 +137,6 @@ spec:
 ---
 
 
-##  Application Preview
-
-Here’s a screenshot of the deployed application running locally inside the Minikube cluster:
-
-![App Preview](assets/app-preview.png)
-
--------
-
 
 
 ## How to Access the App
