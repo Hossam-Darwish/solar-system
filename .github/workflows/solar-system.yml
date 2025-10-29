@@ -34,6 +34,7 @@ jobs:
                 operating_system: macos-latest
 
         runs-on: ${{ matrix.operating_system }}
+        
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
