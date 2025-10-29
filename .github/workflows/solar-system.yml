@@ -34,7 +34,6 @@ jobs:
                 operating_system: macos-latest
 
         runs-on: ${{ matrix.operating_system }}
-
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
@@ -161,7 +160,6 @@ jobs:
             ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }} 
             ghcr.io/hossam-darwish/sola-system:${{ github.sha }}
 
-            
     dev-deploy:
       needs: docker
       runs-on: [self-hosted, ubuntu-vm]
