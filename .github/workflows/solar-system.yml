@@ -5,7 +5,15 @@ on:
   push:
     branches:
       - main
-      - 'feature/*'   
+          - 'feature/*'   
+    paths:
+          - '**.js'
+          - 'package.json'
+          - 'package-lock.json'
+          - 'Dockerfile'
+          - 'kubernetes/**'
+          - '.github/workflows/solar-system.yml'
+        
 
 env:
   MONGO_URI: 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
