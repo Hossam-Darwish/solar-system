@@ -12,7 +12,7 @@ on:
           - 'package-lock.json'
           - 'Dockerfile'
           - 'kubernetes/**'
-          - '.github/workflows/solar-system-ci-cd.yml'
+          - '.github/workflows/solar-system.yml'
       
 
 env:
