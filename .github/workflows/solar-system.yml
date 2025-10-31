@@ -6,6 +6,14 @@ on:
     branches:
       - main
       - 'feature/*'   
+    paths:
+          - '**.js'
+          - 'package.json'
+          - 'package-lock.json'
+          - 'Dockerfile'
+          - 'kubernetes/**'
+          - '.github/workflows/solar-system-ci-cd.yml'
+      
 
 env:
   MONGO_URI: 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
