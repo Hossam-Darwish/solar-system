@@ -1,5 +1,6 @@
+# DevOps Portfolio Projects
 
-# Solar System Web App — CI/CD on Kubernetes (Minikube + GitHub Actions)
+## Project 1: Solar System Web App — CI/CD on Kubernetes (Minikube + GitHub Actions)
 
 A containerized **Node.js web application** deployed to a **Kubernetes cluster (Minikube)** with a complete **CI/CD pipeline using GitHub Actions**.  
 This project demonstrates real-world DevOps workflows — including Dockerization, Kubernetes deployment automation, secrets management, and ingress routing — built from scratch.
