@@ -94,8 +94,8 @@ resource "aws_instance" "app_instance" {
               docker pull hoss1212/solar-system:23d87cfd77d23f5ccba975f016dee0427f506bf2
               docker run -d -p 3000:3000 \
                 -e MONGO_URI='mongodb+srv://supercluster.d83jj.mongodb.net/superData' \
-                -e MONGO_USERNAME='superuser' \
-                -e MONGO_PASSWORD='SuperPassword' \
+                -e MONGO_USERNAME='<username>' \
+                -e MONGO_PASSWORD='<password>' \
                 hoss1212/solar-system:23d87cfd77d23f5ccba975f016dee0427f506bf2
               EOF
 }
