@@ -4,3 +4,9 @@ solar-system.png
 .talismanrc
 coverage
 test-results.xml
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+*.tfvars.json
+
