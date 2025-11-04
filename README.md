@@ -289,9 +289,9 @@ The Terraform configuration performs the following:
 
 ###  Screenshots
   
-![Terraform `apply` output]()  
-![AWS EC2 instance dashboard]()  
-![Browser screenshot showing the running app]()  
+![Terraform `apply` output](assets/project2apply.png)  
+![AWS EC2 instance dashboard](assets/project2aws.png)  
+![Browser screenshot showing the running app](assets/project2access.png)  
 
 ---
 
