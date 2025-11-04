@@ -4,14 +4,20 @@ This repository showcases a series of **DevOps projects** designed around a sing
 
 Each project focuses on a different DevOps skillset — from CI/CD automation to infrastructure provisioning — demonstrating hands-on proficiency with modern cloud and DevOps tools.
 
+
 ---
+
+
 
 ## Project 1: Solar System Web App — CI/CD on Kubernetes (Minikube + GitHub Actions)
 
-A containerized **Node.js web application** deployed to a **Kubernetes cluster (Minikube)** with a complete **CI/CD pipeline using GitHub Actions**.  
+A containerized **Node.js web application** deployed to a **Kubernetes cluster (Minikube)** on my local machine, with a complete **CI/CD pipeline using GitHub Actions**.  
 This project demonstrates real-world DevOps workflows — including Dockerization, Kubernetes deployment automation, secrets management, and ingress routing — built from scratch.
 
+
 ---
+
+
 
 ## Features
 
@@ -24,7 +30,10 @@ This project demonstrates real-world DevOps workflows — including Dockerizatio
 - **Namespace-based isolation** for environments (e.g., `development`)
 - **Self-hosted runner** integration for local Kubernetes operations
 
+
 ---
+
+
 
 ## Tech Stack
 
@@ -38,7 +47,10 @@ This project demonstrates real-world DevOps workflows — including Dockerizatio
 | Database | **MongoDB** | App backend data |
 | OS / Runner | **Ubuntu VM (Self-Hosted Runner)** | Executes pipeline jobs locally |
 
+
 ---
+
+
 
 
 ## GitHub Actions Workflow
@@ -50,7 +62,7 @@ The pipeline automates the entire process:
 1. **Build & Push Docker Image**
    - Checks out repository
    - Builds Docker image
-   - Pushes it to DockerHub (and GHCR)
+   - Pushes it to DockerHub and GHCR
 
 2. **Deploy to Kubernetes**
    - Runs on a **self-hosted Ubuntu runner**
@@ -100,6 +112,7 @@ jobs:
           kubectl get svc -n ${{ vars.NAMESPACE }}
           kubectl get ingress -n ${{ vars.NAMESPACE }}
 
+
 ---
 
 
@@ -127,7 +140,10 @@ spec:
                 name: solar-system
                 port:
                   number: 3000
+
 ```
+
+
 
 
 ### Kubernetes Components
@@ -141,7 +157,10 @@ spec:
 | `mongo-db-creds`           | Secret                | Stores database credentials        |
 | `ingress-nginx-controller` | LoadBalancer          | External access point (via tunnel) |
 
+
 ---
+
+
 
 
 ##  Application Preview
@@ -150,7 +169,10 @@ Here’s a screenshot of the deployed application running locally inside the Min
 
 ![App Preview](assets/app-preview.png)
 
+
 -------
+
+
 
 
 ## How to Access the App
@@ -175,7 +197,9 @@ sudo nano /etc/hosts
 5- Visit
 http://solar-system.local
 
+
 ---
+
 
 
 
@@ -191,7 +215,10 @@ http://solar-system.local
 | `MONGO_USERNAME`  | Variable    | mongoUser             | MongoDB username          |
 | `MONGO_URI`       | Environment | mongodb://mongo:27017 | MongoDB connection string |
 
+
 ---
+
+
 
 
 ## Results & Verification
@@ -207,7 +234,9 @@ http://solar-system.local
 
 ### You can view pipeline runs under Actions tab in GitHub.
 
+
 ---
+
 
 
 
@@ -226,7 +255,9 @@ http://solar-system.local
 
 - CI/CD integration with self-hosted runner
 
+
 ---
+
 
 
 ##  Project 2: Infrastructure as Code (IaC) with Terraform
@@ -235,17 +266,23 @@ http://solar-system.local
 This project provisions AWS infrastructure using **Terraform** to deploy the same Node.js "Solar System" web application from Project 1.  
 It automates the creation of an EC2 instance, security groups, networking configuration, and application deployment — all through code.
 
+
 ---
+
+
 
 ###  Project Overview
 - **Infrastructure Automation:** Defined using Terraform scripts (`main.tf`, `variables.tf`, `outputs.tf`, `provider.tf`)
 - **Deployment:** Node.js Docker container automatically runs on the EC2 instance after provisioning
-- **State Management:** Terraform remote and local state managed securely
+- **State Management:** Terraform remote state managed securely
 - **Configuration:** Security groups allow controlled access to the app via HTTP
 - **Reusability:** Variables and outputs defined for flexibility and clarity
 - ****Note: For security, credentials are parameterized. In a real-world deployment, these would be securely managed using AWS Systems Manager Parameter Store or Secrets Manager.
 
+
 ---
+
+
 
 ###  Key Technologies
 - **Terraform** – Infrastructure as Code tool  
@@ -254,7 +291,10 @@ It automates the creation of an EC2 instance, security groups, networking config
 - **Docker** – Containerized Node.js app deployment  
 - **Linux User Data Scripts** – Automates app start on boot  
 
+
 ---
+
+
 
 ###  Infrastructure Design
 The Terraform configuration performs the following:
@@ -263,21 +303,12 @@ The Terraform configuration performs the following:
 3. Exposes the app to the internet through port 3000.  
 4. Outputs the public IP for direct browser access.  
 
----
-
-###  Repository Structure
-
-/terraform
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── provider.tf
-└── terraform.tfvars
-
--------
 
 
 ---
+
+
+
 
 ###  Testing & Validation
 - Verified successful instance creation via AWS Management Console  
@@ -285,7 +316,10 @@ The Terraform configuration performs the following:
 - Validated Docker container auto-starts on reboot  
 - Confirmed Terraform destroy removes all resources cleanly  
 
+
 ---
+
+
 
 ###  Screenshots
   
@@ -293,16 +327,18 @@ The Terraform configuration performs the following:
 ![AWS EC2 instance dashboard](assets/project2aws.png)  
 ![Browser screenshot showing the running app](assets/project2access.png)  
 
+
 ---
+
+
 
 ###  Learning Outcome
 - Mastered writing modular Terraform configurations  
-- Understood how to automate infrastructure provisioning  
-- Learned to connect Terraform deployments with CI/CD pipelines  
+- Understood how to automate infrastructure provisioning    
 - Improved understanding of Infrastructure as Code (IaC) best practices  
 
----
 
+---
 
 
 
