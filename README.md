@@ -279,7 +279,7 @@ The Terraform configuration performs the following:
 
 ---
 
-### 🧪 Testing & Validation
+###  Testing & Validation
 - Verified successful instance creation via AWS Management Console  
 - Confirmed app accessibility using the public IP address  
 - Validated Docker container auto-starts on reboot  
@@ -287,15 +287,15 @@ The Terraform configuration performs the following:
 
 ---
 
-### 🖼️ Screenshots
+###  Screenshots
   
-- Terraform `apply` output  
-- AWS EC2 instance dashboard  
-- Browser screenshot showing the running app  
+![Terraform `apply` output]()  
+![AWS EC2 instance dashboard]()  
+![Browser screenshot showing the running app]()  
 
 ---
 
-### 🧠 Learning Outcome
+###  Learning Outcome
 - Mastered writing modular Terraform configurations  
 - Understood how to automate infrastructure provisioning  
 - Learned to connect Terraform deployments with CI/CD pipelines  
