@@ -11,7 +11,8 @@ Each project focuses on a different DevOps skillset — from CI/CD automation to
 
 ## Project 1: Solar System Web App — CI/CD on Kubernetes (Minikube + GitHub Actions)
 
-A containerized **Node.js web application** deployed to a **Kubernetes cluster (Minikube)** on my local machine, with a complete **CI/CD pipeline using GitHub Actions**.  
+A containerized **Node.js web application** deployed to a **Kubernetes cluster (Minikube)** on a local machine, with a complete **CI/CD pipeline using GitHub Actions**.
+
 This project demonstrates real-world DevOps workflows — including Dockerization, Kubernetes deployment automation, secrets management, and ingress routing — built from scratch.
 
 
