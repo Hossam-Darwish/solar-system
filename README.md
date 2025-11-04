@@ -1,4 +1,10 @@
-# DevOps Portfolio Projects
+#  DevOps Project Series: Solar System Web Application
+
+This repository showcases a series of **DevOps projects** designed around a single web application — **“Solar System”**, a simple Node.js app containerized with Docker and deployed through automated pipelines and Infrastructure as Code.
+
+Each project focuses on a different DevOps skillset — from CI/CD automation to infrastructure provisioning — demonstrating hands-on proficiency with modern cloud and DevOps tools.
+
+---
 
 ## Project 1: Solar System Web App — CI/CD on Kubernetes (Minikube + GitHub Actions)
 
@@ -221,6 +227,86 @@ http://solar-system.local
 - CI/CD integration with self-hosted runner
 
 ---
+
+
+##  Project 2: Infrastructure as Code (IaC) with Terraform
+
+**Description:**  
+This project provisions AWS infrastructure using **Terraform** to deploy the same Node.js "Solar System" web application from Project 1.  
+It automates the creation of an EC2 instance, security groups, networking configuration, and application deployment — all through code.
+
+---
+
+###  Project Overview
+- **Infrastructure Automation:** Defined using Terraform scripts (`main.tf`, `variables.tf`, `outputs.tf`, `provider.tf`)
+- **Deployment:** Node.js Docker container automatically runs on the EC2 instance after provisioning
+- **State Management:** Terraform remote and local state managed securely
+- **Configuration:** Security groups allow controlled access to the app via HTTP
+- **Reusability:** Variables and outputs defined for flexibility and clarity
+- ****Note: For security, credentials are parameterized. In a real-world deployment, these would be securely managed using AWS Systems Manager Parameter Store or Secrets Manager.
+
+---
+
+###  Key Technologies
+- **Terraform** – Infrastructure as Code tool  
+- **AWS EC2** – Virtual machine hosting the application  
+- **AWS Security Groups** – Access control and networking configuration  
+- **Docker** – Containerized Node.js app deployment  
+- **Linux User Data Scripts** – Automates app start on boot  
+
+---
+
+###  Infrastructure Design
+The Terraform configuration performs the following:
+1. Provisions an EC2 instance with an attached security group.  
+2. Installs Docker on the instance and pulls the “Solar System” app image.  
+3. Exposes the app to the internet through port 3000.  
+4. Outputs the public IP for direct browser access.  
+
+---
+
+###  Repository Structure
+
+/terraform
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── provider.tf
+└── terraform.tfvars
+
+-------
+
+
+---
+
+### 🧪 Testing & Validation
+- Verified successful instance creation via AWS Management Console  
+- Confirmed app accessibility using the public IP address  
+- Validated Docker container auto-starts on reboot  
+- Confirmed Terraform destroy removes all resources cleanly  
+
+---
+
+### 🖼️ Screenshots
+  
+- Terraform `apply` output  
+- AWS EC2 instance dashboard  
+- Browser screenshot showing the running app  
+
+---
+
+### 🧠 Learning Outcome
+- Mastered writing modular Terraform configurations  
+- Understood how to automate infrastructure provisioning  
+- Learned to connect Terraform deployments with CI/CD pipelines  
+- Improved understanding of Infrastructure as Code (IaC) best practices  
+
+---
+
+
+
+
+
 
 
  ## Author
